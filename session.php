@@ -125,6 +125,9 @@ foreach ($results as $row) {
 echo'<option class="mygrouproomstyle" value="'.$row->name.'">'.$row->name.'</option>';
     }
 echo '</select></form></div>'; 
+echo '<script>function changemygrouproom() {
+  document.getElementById("SelectGroupRoomForm").submit();} </script>';	
+	
 	$mygrouproomselected = $_POST['mygrouproom'];
 
 	$resultsuite = $DB->get_records_sql("SELECT * FROM {groups_members} gm JOIN {groups} g
