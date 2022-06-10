@@ -103,6 +103,50 @@ echo "}";
 echo "setInterval(participating, 60000);\n";
 echo "</script>";
 
-createsession($teacher, $cmid, $avatar, $nombre, $session, null, $jitsi);
+// start jitsi-group-room
+
+$results = $DB->get_records_sql("SELECT * FROM {groups_members} gm JOIN {groups} g
+                                    ON g.id = gm.groupid
+                                  WHERE gm.userid = ? AND courseid='$courseid'
+                                   ORDER BY name ASC", array($USER->id));							   
+
+$row_cnt = count($results);
+if($row_cnt > 1){
+
+$urlparams1 = array('avatar' => $avatar, 'nom' => $nombre, 'ses' => $session, 'userid' => $USER->id,
+    'courseid' => $courseid, 'cmid' => $cmid, 't' => $teacher);
+echo '<style> .mygrouproomstyle {display: inline-grid; grid-auto-flow: row dense; text-align:center;}</style>';
+echo '<div style="text-align:center;padding-bottom:20px;">
+<form name="SelectGroupRoomForm" action="'.new moodle_url('/mod/jitsi/session.php', $urlparams1).'" method="POST" id="SelectGroupRoomForm">
+<select type="text" name="mygrouproom" id="mygrouproom_ID" style="font-size:16px;" onchange="changemygrouproom()">
+<option value="" disabled selected>Group choice</option>';
+foreach ($results as $row) {
+	$groupeName = $row->name;
+echo'<option class="mygrouproomstyle" value="'.$row->name.'">'.$row->name.'</option>';
+    }
+echo '</select></form></div>'; 
+	$mygrouproomselected = $_POST['mygrouproom'];
+
+	$resultsuite = $DB->get_records_sql("SELECT * FROM {groups_members} gm JOIN {groups} g
+                                    ON g.id = gm.groupid
+                                  WHERE gm.userid = ? AND courseid='$courseid' AND name='$mygrouproomselected' 
+                                   ORDER BY name ASC", array($USER->id));	
+	foreach ($resultsuite as $rowsuite) {
+	$groupeName = $rowsuite->name;
+    }
+	createsession($teacher, $cmid, $avatar, $nombre, $session.' '.$groupeName, null, $jitsi);
+}
+elseif ($row_cnt <= 1) {
+foreach ($results as $row) {
+	$groupeName = $row->name;
+    }
+	createsession($teacher, $cmid, $avatar, $nombre, $session.' '.$groupeName, null, $jitsi);
+}
+
+if($mygrouproomselected) {
+	echo '<style> .mygrouproomstyle {display: inline-grid; grid-auto-flow: row dense; text-align:center;}</style>';
+	echo '<p class="mygrouproomstyle" style="text-align:center;color:green;font-weight:bold;">My current group : '.$mygrouproomselected.'</p>';}
+
+// end jitsi-group-room
 
 echo $OUTPUT->footer();
