@@ -115,8 +115,7 @@ if($row_cnt > 1){
 
 $urlparams1 = array('avatar' => $avatar, 'nom' => $nombre, 'ses' => $session, 'userid' => $USER->id,
     'courseid' => $courseid, 'cmid' => $cmid, 't' => $teacher);
-echo '<style> .mygrouproomstyle {display:text-align:center;}</style>';
-echo '<div style="text-align:center;padding-bottom:4px;">
+echo '<div style="text-align:center;padding-bottom:1px; margin-bottom:1px;">
 <form name="SelectGroupRoomForm" action="'.new moodle_url('/mod/jitsi/session.php', $urlparams1).'" method="POST" id="SelectGroupRoomForm">
 <select type="text" name="mygrouproom" id="mygrouproom_ID" style="font-size:16px;" onchange="changemygrouproom()">
 <option value="" disabled selected>Group choice</option>';
@@ -147,8 +146,7 @@ foreach ($results as $row) {
 }
 
 if($mygrouproomselected) {
-	echo '<style> .mygrouproomstyle {text-align:center;}</style>';
-	echo '<p class="mygrouproomstyle" style="text-align:center;color:green;font-weight:bold;">My current group : '.$mygrouproomselected.'</p>';}
+	echo '<p style="text-align:center;color:green;font-weight:bold;">My current group : '.$mygrouproomselected.'</p>';}
 
 // end jitsi-group-room
 
