@@ -117,7 +117,7 @@ Basically the token configuration send your teachers (or roles with the mod/jits
 As we said "out of the box", the plugin connects with the public servers at meet.jit.si but there many other public Jitsi Meet servers... just make some search with Google.  If your institution haven't enough resources to deploy their own Jitsi servers it's OK to use public servers and meet.jit.si is a very robust server but you should test other servers in order to be able change in case of a disruption service or maybe because you find a public server nearest to your users and with less latency.
 
 With our default configuration in NO token mode, students can mute or kickoff participants (including teachers), using the "Panel participants" but this is notified to all the participants so students could be punished. If that's not a problem for you we recommend the default settings, but if that disturbs you, you could disable the "Participants panel" and the "Raise hand button" in the plugin configuration loosing those features for your students. We like think students are good... so we recommend to start without restrictions. You must decide.
---------------------jitsi group room----------------------
-New feature:
+
+New feature: JITSI GROUP ROOM
 Instant moodle group conference room change of a course
 https://drive.google.com/file/d/1A9IyrORf_xDm19rND5gnZZ4r0s99uRkK/view?usp=sharing
