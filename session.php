@@ -120,8 +120,8 @@ echo '<div style="text-align:center;padding-bottom:1px; margin-bottom:1px;">
 <select type="text" name="mygrouproom" id="mygrouproom_ID" style="font-size:16px;" onchange="changemygrouproom()">
 <option value="" disabled selected>Group choice</option>';
 foreach ($results as $row) {
-	$groupeName = $row->name;
-echo'<option class="mygrouproomstyle" value="'.$row->name.'">'.$row->name.'</option>';
+	$groupeNameSeleted = $row->name;
+echo'<option value="'.$groupeNameSeleted.'">'.$groupeNameSeleted.'</option>';
     }
 echo '</select></form></div>'; 
 echo '<script>function changemygrouproom() {
