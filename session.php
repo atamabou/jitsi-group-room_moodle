@@ -146,7 +146,7 @@ foreach ($results as $row) {
 }
 
 if($mygrouproomselected) {
-	echo '<p style="text-align:center;color:green;font-weight:bold;">My current group : '.$mygrouproomselected.'</p>';}
+	echo '<p style="text-align:center;color:inherit;font-weight:bold;">My current group : '.$mygrouproomselected.'</p>';}
 
 // end jitsi-group-room
 
