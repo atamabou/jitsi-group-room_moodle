@@ -1,6 +1,6 @@
 # New feature: JITSI GROUP ROOM
-Instant moodle group conference room change of a course
-https://drive.google.com/file/d/1A9IyrORf_xDm19rND5gnZZ4r0s99uRkK/view?usp=sharing
+Instant moodle group conference room change of a course.
+
 
 # Jitsi Meet moodle plugin
 This plugin (**mod_jitsi**) allows teachers **create webconference activities** fully integrated **with Jitsi Meet Servers**.
