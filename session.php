@@ -40,6 +40,9 @@ if ($state == null) {
     $session = required_param('ses', PARAM_TEXT);
     $avatar = $CFG->jitsi_showavatars == true ? required_param('avatar', PARAM_TEXT) : null;
     $teacher = required_param('t', PARAM_BOOL);
+	$groupeNameSeleted = '';
+	$groupeName = '';
+    $mygrouproomselected = $_POST['mygrouproom'];
 
 } else {
     $paramdecode = base64urldecode($state);
@@ -130,8 +133,7 @@ echo '</select></form></div>';
 echo '<script>function changemygrouproom() {
   document.getElementById("SelectGroupRoomForm").submit();} </script>';	
 	
-	$mygrouproomselected = $_POST['mygrouproom'];
-
+	
 	$resultsuite = $DB->get_records_sql("SELECT * FROM {groups_members} gm JOIN {groups} g
                                     ON g.id = gm.groupid
                                   WHERE gm.userid = ? AND courseid='$courseid' AND name='$mygrouproomselected' 
