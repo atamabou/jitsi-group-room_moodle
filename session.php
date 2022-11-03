@@ -40,6 +40,7 @@ if ($state == null) {
     $session = required_param('ses', PARAM_TEXT);
     $avatar = $CFG->jitsi_showavatars == true ? required_param('avatar', PARAM_TEXT) : null;
     $teacher = required_param('t', PARAM_BOOL);
+    $editingteacher = required_param('t', PARAM_BOOL);
 
 } else {
     $paramdecode = base64urldecode($state);
@@ -112,7 +113,7 @@ echo "</script>";
 
 // start jitsi-group-room
 echo '<script>function changemygrouproom() {document.getElementById("SelectGroupRoomForm").submit();} </script>';	
-if($teacher){
+if($editingteacher){
 $results = $DB->get_records_sql("SELECT * FROM {groups} WHERE courseid='$courseid' ORDER BY name ASC");
 echo '<div style="text-align:center;">
 <form name="SelectGroupRoomForm" action="'.new moodle_url('/mod/jitsi/session.php', $urlparams1).'" method="POST" id="SelectGroupRoomForm">
